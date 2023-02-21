@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Insights/Quick start
+
+- helper Components are probably meant to be placed in a `components` directory
+- Next.js uses page-based routing - to create a new page, just create a new file in the `pages` directory
+- use `Link` instead of `a` to link between local pages - it should provide a better user experience (single-page feel)
+
 ## Getting Started
 
 First, run the development server:
