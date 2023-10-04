@@ -1,11 +1,13 @@
 import Link from "next/link";
+import styles from '@/styles/Menu.module.css'
 
 export default function MainMenu() {
   return (
-    <nav>
+    <nav className={styles.list}>
+      <h1>Main menu</h1>
       <ul>
-        <LinkEntry href="/" label="Home"/>
-        <LinkEntry href="/menu" label="Menu" />
+        <LinkEntry href="/game" label="Start new game"/>
+        <LinkEntry href="/settings" label="Settings" />
       </ul>
     </nav>
   );
@@ -18,7 +20,7 @@ interface LinkEntryProps {
 
 function LinkEntry({ href, label }: LinkEntryProps) {
   return (
-    <li>
+    <li className={styles.item}>
       <Link href={href}>{label}</Link>
     </li>
   );

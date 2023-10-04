@@ -1,0 +1,24 @@
+.list {
+  background-color:#44a;
+  text-align: center;
+  padding: var(--base-unit);
+}
+
+.item {
+  width: 100%;
+  margin: var(--base-unit) 0;
+  text-align: center;
+  border: 1px solid #888;
+  border-radius: var(--base-unit);
+}
+
+.item:hover {
+  transition: all .7s;
+  background-color: rgba(255,255,255,.4);
+}
+
+.item a {
+  display: block;
+  padding: var(--base-unit);
+  width: 100%;
+}
