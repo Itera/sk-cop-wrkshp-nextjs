@@ -1,24 +1,24 @@
+import GameBoard, { GameBoardState } from "@/components/game-board";
 import { initGrid } from "@/shared/utils";
 import { useState } from "react"
 
 const BOARD_SIZE = 10;
 export type Player = 'ME' | 'OPPONENT';
-export type GameBoard = number[][];
 export enum GamePhase {
   SET_UP = "SET_UP",
   PLAYING = "PLAYING",
   END = "END"
 }
 
-function initBoard(): GameBoard {
+function initBoard(): GameBoardState {
   return initGrid(BOARD_SIZE, BOARD_SIZE);
 }
 
 export default function Menu() {
   const [currentPlayer, setCurrentPlayer] = useState<Player>('ME');
   const [gamePhase, setGamePhase] = useState<GamePhase>(GamePhase.SET_UP);
-  const [myBoard, setMyBoard] = useState<GameBoard>(initBoard());
-  const [opponentsBoard, setpponentsBoard] = useState<GameBoard>(initBoard());
+  const [myBoard, setMyBoard] = useState<GameBoardState>(initBoard());
+  const [opponentsBoard, setpponentsBoard] = useState<GameBoardState>(initBoard());
 
 
   const handleFire = () => {
@@ -34,11 +34,11 @@ export default function Menu() {
       <button onClick={handleFire}>Fire!</button>
       <section>
         <h2>My board</h2>
-        {myBoard}
+        <GameBoard state={myBoard} />
       </section>
       <section>
         <h2>Opponent&apos;s board</h2>
-        {opponentsBoard}
+        <GameBoard state={opponentsBoard} />
       </section>
     </main>
   )
