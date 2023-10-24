@@ -1,0 +1,30 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  place-items: stretch;
+  place-content: center;
+  border-bottom: 1px solid #888;
+  border-right: 1px solid #888;
+}
+
+.cell {
+  place-self: stretch;
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+}
+
+.unknown {
+  aspect-ratio: 1;
+  background-color: #333;
+}
+
+.water {
+  aspect-ratio: 1;
+  background-color: #16c;
+}
+
+.hit {
+  aspect-ratio: 1;
+  background-color: rgb(252, 207, 44);
+}
