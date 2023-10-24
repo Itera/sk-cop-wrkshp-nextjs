@@ -1,27 +1,24 @@
+import { initGrid } from "@/shared/utils";
 import { useState } from "react"
 
-const BoardSize = 10;
+const BOARD_SIZE = 10;
 export type Player = 'ME' | 'OPPONENT';
-export type GameState = boolean[][]; // TODO not boolean
+export type GameBoard = number[][];
+export enum GamePhase {
+  SET_UP = "SET_UP",
+  PLAYING = "PLAYING",
+  END = "END"
+}
 
-function initBoard(): GameState {
-  const board: GameState = [];
-
-  for (let i = 0; i < BoardSize; i++) {
-    const row: boolean[] = [];
-    for (let j = 0; j < BoardSize; j++) {
-      row.push(false);
-    }
-    board.push(row);
-  }
-
-  return board;
+function initBoard(): GameBoard {
+  return initGrid(BOARD_SIZE, BOARD_SIZE);
 }
 
 export default function Menu() {
   const [currentPlayer, setCurrentPlayer] = useState<Player>('ME');
-  const [myBoard, setMyBoard] = useState<GameState>(initBoard());
-  const [opponentsBoard, setpponentsBoard] = useState<GameState>(initBoard());
+  const [gamePhase, setGamePhase] = useState<GamePhase>(GamePhase.SET_UP);
+  const [myBoard, setMyBoard] = useState<GameBoard>(initBoard());
+  const [opponentsBoard, setpponentsBoard] = useState<GameBoard>(initBoard());
 
 
   const handleFire = () => {
@@ -37,11 +34,11 @@ export default function Menu() {
       <button onClick={handleFire}>Fire!</button>
       <section>
         <h2>My board</h2>
-        [...]
+        {myBoard}
       </section>
       <section>
         <h2>Opponent&apos;s board</h2>
-        [...]
+        {opponentsBoard}
       </section>
     </main>
   )
