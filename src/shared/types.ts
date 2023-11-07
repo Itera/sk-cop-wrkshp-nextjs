@@ -9,6 +9,7 @@ export enum SquareState {
   Unknown,
   Boat,
   Empty,
+  Water
 }
 
 export type GameBoardState = SquareState[][];
