@@ -5,11 +5,10 @@ import { useState } from "react";
 import { initBoard } from "@/shared/utils";
 
 export interface GameSetupProps {
-  initialBoard: GameBoardState,
   onSetupFinished: (myNewBoard: GameBoardState) => void;
 }
 
-const GameSetup = ({ initialBoard, onSetupFinished }: GameSetupProps) => {
+const GameSetup = ({ onSetupFinished }: GameSetupProps) => {
   const [newBoard, setNewBoard] = useState<GameBoardState>(initBoard());
   const handleBoatDragStart = (event: React.DragEvent<HTMLDivElement>) => {
     event.dataTransfer.setData('text/plain', 'boat');
@@ -20,7 +19,6 @@ const GameSetup = ({ initialBoard, onSetupFinished }: GameSetupProps) => {
     const updatedGrid = [...newBoard];
     updatedGrid[rowIndex][colIndex] = SquareState.Boat;
     setNewBoard(updatedGrid);
-
   };
 
   return (
@@ -31,10 +29,10 @@ const GameSetup = ({ initialBoard, onSetupFinished }: GameSetupProps) => {
 
       <div className={styles.gameArea}>
         <section className={styles.gameAreaBoard}>
-          <GameBoard grid2D={initialBoard} handleDrop={handleBoatDrop} />
+          <GameBoard grid2D={newBoard} handleDrop={handleBoatDrop} />
         </section>
       </div>
-      <button onClick={() => onSetupFinished(initialBoard)}>Done</button>
+      <button onClick={() => onSetupFinished(newBoard)}>Done</button>
     </>
   )
 };

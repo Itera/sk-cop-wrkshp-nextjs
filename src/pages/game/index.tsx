@@ -19,7 +19,6 @@ export default function Menu() {
       <h1>This is the GAME</h1>
       {gamePhase === GamePhase.SET_UP && 
         <GameSetup 
-          initialBoard={myBoard}
           onSetupFinished={handleSetupFinished} 
         />
       }      
