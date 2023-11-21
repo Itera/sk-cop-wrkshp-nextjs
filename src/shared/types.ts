@@ -8,7 +8,6 @@ export enum GamePhase {
 export enum SquareState {
   Unknown,
   Boat,
-  Empty,
   Water
 }
 
