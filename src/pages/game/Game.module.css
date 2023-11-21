@@ -9,3 +9,13 @@
   width: 100%;
   margin: 1rem;
 }
+
+.water {
+  background-color: #1166cc;
+}
+
+.boat {
+  background-color: #bada55;
+  width: 3vw;
+  height: 3vh;
+}
