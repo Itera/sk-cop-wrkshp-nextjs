@@ -1,10 +1,12 @@
-import { GameBoardState, SquareState } from "@/shared/types";
+import { GameBoardState, SquareState } from '@/shared/types'
 
-export const BOARD_SIZE = 10;
+export const BOARD_SIZE = 10
 
 export function initBoard(): GameBoardState {
-  return initGrid(BOARD_SIZE, BOARD_SIZE);
+  return initGrid(BOARD_SIZE, BOARD_SIZE)
 }
 export const initGrid = (rows: number, cols: number): SquareState[][] => {
-  return Array.from(Array(rows), () => new Array(cols).fill(SquareState.Unknown));
+  return Array.from(Array(rows), () =>
+    new Array(cols).fill(SquareState.Unknown),
+  )
 }
