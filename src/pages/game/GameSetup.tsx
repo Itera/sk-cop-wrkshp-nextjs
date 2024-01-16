@@ -9,13 +9,17 @@ export interface GameSetupProps {
 }
 
 const GameSetup = ({ onSetupFinished }: GameSetupProps) => {
-  const [newBoard, setNewBoard] = useState<GameBoardState>(initBoard());
-  const handleBoatDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-    event.dataTransfer.setData('text/plain', 'boat');
+  const [newBoard, setNewBoard] = useState<GameBoardState>(initBoard(SquareState.Water));
+
+  const handleBoatDragStart = (event: React.DragEvent<HTMLDivElement>, boatSize: number) => {
+    event.dataTransfer.setData('text/plain', ''+boatSize);
   };
 
-  const handleBoatDrop = (rowIndex: number, colIndex: number) => {
-    console.log("Boat dropped at:", rowIndex, colIndex);
+  const handleBoatDrop = (rowIndex: number, colIndex: number, event: { dataTransfer: { getData: (format: string) => any; }; }) => {
+    const boatSizeToDrop = event.dataTransfer.getData('text/plain')
+    console.log("Boat dropped at:", rowIndex, colIndex, boatSizeToDrop);
+    // TODO - what to do with info WHERE the drop happened and WHAT KIND of boat it was
+    // so far it paints one square
     const updatedGrid = [...newBoard];
     updatedGrid[rowIndex][colIndex] = SquareState.Boat;
     setNewBoard(updatedGrid);
@@ -24,8 +28,15 @@ const GameSetup = ({ onSetupFinished }: GameSetupProps) => {
   return (
     <>
       <h2>Place your ships:</h2>
-      <div className={styles.boat} draggable onDragStart={handleBoatDragStart}>
-      </div>
+      <ul className={styles.shipSelector}>
+        <li><div draggable onDragStart={(ev) => handleBoatDragStart(ev, 5)} >5 square ship</div></li>
+        <li><div draggable onDragStart={(ev) => handleBoatDragStart(ev, 4)} >4 square ship</div></li>
+        <li><div draggable onDragStart={(ev) => handleBoatDragStart(ev, 3)} >3 square ship</div></li>
+        <li><div draggable onDragStart={(ev) => handleBoatDragStart(ev, 3)} >3 square ship</div></li>
+        <li><div draggable onDragStart={(ev) => handleBoatDragStart(ev, 2)} >2 square ship</div></li>
+      </ul>
+
+      
 
       <div className={styles.gameArea}>
         <section className={styles.gameAreaBoard}>

@@ -5,7 +5,7 @@ import React from "react";
 interface GameBoardProps {
   grid2D: GameBoardState;
   renderSquare?: (tile: SquareState) => JSX.Element;
-  handleDrop?: (rowIndex: number, colIndex: number) => void;
+  handleDrop?: (rowIndex: number, colIndex: number, event: any) => void;
 }
 
 const GameBoard = ({ grid2D, renderSquare, handleDrop }: GameBoardProps) => {
@@ -13,7 +13,7 @@ const GameBoard = ({ grid2D, renderSquare, handleDrop }: GameBoardProps) => {
   const onDrop = (event: React.DragEvent<HTMLDivElement>, rowIndex: number, colIndex: number) => {
     event.preventDefault();
     if (handleDrop) {
-      handleDrop(rowIndex, colIndex);
+      handleDrop(rowIndex, colIndex, event);
     }
   };
 

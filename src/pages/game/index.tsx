@@ -7,7 +7,7 @@ import GameInProgress from "./GameInProgress";
 export default function Menu() {
   const [gamePhase, setGamePhase] = useState<GamePhase>(GamePhase.SET_UP);
   const [myBoard, setMyBoard] = useState<GameBoardState>(initBoard());
-  const [opponentsBoard, setpponentsBoard] = useState<GameBoardState>(initBoard());
+  const [opponentsBoard, setOpponentsBoard] = useState<GameBoardState>(initBoard());
 
   const handleSetupFinished = (myNewBoard: GameBoardState) => {
     setMyBoard(myNewBoard);

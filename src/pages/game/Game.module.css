@@ -10,8 +10,7 @@
   margin: 1rem;
 }
 
-.boat {
-  background-color: #bada55;
-  width: 3vw;
-  height: 3vh;
+.shipSelector > li {
+  margin: 1rem;
+  display: inline-block;
 }

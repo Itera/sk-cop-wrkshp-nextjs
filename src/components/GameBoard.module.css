@@ -24,6 +24,11 @@
   background-color: #16c;
 }
 
+.boat {
+  aspect-ratio: 1;
+  background-color: rgb(195, 218, 228);
+}
+
 .hit {
   aspect-ratio: 1;
   background-color: rgb(252, 207, 44);
