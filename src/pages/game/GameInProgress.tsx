@@ -1,33 +1,28 @@
-import { GameBoardState, Player } from "@/shared/types";
-import { useState } from "react";
+import { GameBoardState, Player } from '@/shared/types'
+import { useState } from 'react'
 import styles from './Game.module.css'
-import GameBoard from "@/components/GameBoard";
-
+import GameBoard from '@/components/GameBoard'
 
 export interface GameInProgressProps {
-  myBoard: GameBoardState;
-  opponentsBoard: GameBoardState;
-  onGameFinished: () => void;
+  myBoard: GameBoardState
+  opponentsBoard: GameBoardState
+  onGameFinished: () => void
 }
 
 const GameInProgress = (props: GameInProgressProps) => {
-  const { 
-    myBoard, 
-    opponentsBoard,
-    onGameFinished 
-  } = props;
-  const [currentPlayer, setCurrentPlayer] = useState<Player>('ME');
+  const { myBoard, opponentsBoard, onGameFinished } = props
+  const [currentPlayer, setCurrentPlayer] = useState<Player>('ME')
 
   const handleFire = () => {
     setCurrentPlayer((player: Player) => {
-      return player === 'ME' ? 'OPPONENT' : 'ME';
+      return player === 'ME' ? 'OPPONENT' : 'ME'
     })
   }
-  
+
   return (
     <>
       <h2>Game in progress</h2>
-      <p>Player: { currentPlayer }</p>
+      <p>Player: {currentPlayer}</p>
       <button onClick={handleFire}>Fire!</button>
       <div className={styles.gameArea}>
         <section className={styles.gameAreaBoard}>
@@ -44,7 +39,7 @@ const GameInProgress = (props: GameInProgressProps) => {
         <button onClick={onGameFinished}>End game</button>
       </p>
     </>
-  );
-};
+  )
+}
 
-export default GameInProgress;
+export default GameInProgress

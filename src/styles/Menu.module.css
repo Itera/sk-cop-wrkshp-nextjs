@@ -1,5 +1,5 @@
 .list {
-  background-color:#44a;
+  background-color: #44a;
   text-align: center;
   padding: var(--base-unit);
 }
@@ -13,8 +13,8 @@
 }
 
 .item:hover {
-  transition: all .7s;
-  background-color: rgba(255,255,255,.4);
+  transition: all 0.7s;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .item a {
